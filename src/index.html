@@ -2,21 +2,41 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vanilla App Template</title>
+    <title>Image Search</title>
     <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/loader.css" />
   </head>
+
   <body>
-    <load src="./partials/header.html" icon-path="img/sprite.svg#logo" />
+    <header class="header">
+      <form class="form">
+        <input type="text" name="query" placeholder="Search images..." />
+        <button type="submit" class="search-btn">Search</button>
+      </form>
+    </header>
 
-    <main>
-      <!-- Loads the specified .html file -->
-      <load src="./partials/vite-promo.html" />
-      <load src="./partials/badges.html" />
+    <!-- Лоадер - Індикатор завантаження -->
+    <span id="loader" class="loader is-hidden">
+      <div class="ball-spin-fade-loader">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </span>
+
+    <main class="main">
+      <ul class="gallery"></ul>
+
+      <div class="loader-add hidden"><b>Loading images, please wait...</b></div>
+
+      <button type="button" class="load-more hidden">Load more</button>
     </main>
-
-    <load src="./partials/footer.html" />
 
     <script type="module" src="./main.js"></script>
   </body>
