@@ -26,6 +26,7 @@ const loaderAdd = document.querySelector('.loader-add');
 
 let currentQuery = '';
 let currentPage = 1;
+let totalPages = 0;
 
 searchForm.addEventListener('submit', handleSubmit);
 loadMoreBtn.addEventListener('click', handleLoadMore);
@@ -52,6 +53,7 @@ async function handleSubmit(event) {
     clearGallery(); // Очищаємо попередню галерею
 
     const data = await getImagesByQuery(currentQuery, currentPage);
+    console.log(data);
 
     if (data.hits.length === 0) {
       //  Метод бібліотеки iziToast, який показує інформаційне (info) повідомлення. Якщо бекенд повертає порожній масив, це означає, що нічого підходящого не було знайдено. У такому випадку відображай повідомлення з текстом:
@@ -65,8 +67,10 @@ async function handleSubmit(event) {
     }
 
     createGallery(data.hits);
+    console.log(data.hits);
 
-    if (data.totalHits > 15) {
+    totalPages = Math.ceil(data.totalHits / 15);
+    if (currentPage < totalPages) {
       showLoadMoreButton();
     }
   } catch (error) {
