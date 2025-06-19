@@ -66,11 +66,3 @@ export function hideLoadMoreButton() {
   loadMoreBtn.classList.add('hidden');
 }
 
-// Повідомлення  "Loading images, please wait..." при натисканні на кнопку
-export function showLoaderAdd() {
-  document.querySelector('.loader-add').classList.remove('hidden');
-}
-
-export function hideLoaderAdd() {
-  document.querySelector('.loader-add').classList.add('hidden');
-}

@@ -5,9 +5,6 @@ import iziToast from 'izitoast';
 // Вони потрібні, щоб зробити візуальне оформлення сповіщень відповідно до дизайну iziToast (кольори, анімації, розташування тостів тощо).
 import 'izitoast/dist/css/iziToast.min.css';
 
-// // Бібліотека з гарними індикаторами завантаження css-loader
-import './css/loader.css';
-
 import { getImagesByQuery } from './js/pixabay-api';
 import {
   createGallery,
@@ -15,14 +12,12 @@ import {
   showLoader,
   hideLoader,
   showLoadMoreButton,
-  hideLoadMoreButton,
-  showLoaderAdd,
-  hideLoaderAdd,
+  hideLoadMoreButton,    
 } from './js/render-functions';
 
 const searchForm = document.querySelector('.form');
 const loadMoreBtn = document.querySelector('.load-more');
-const loaderAdd = document.querySelector('.loader-add');
+
 
 let currentQuery = '';
 let currentPage = 1;
@@ -49,7 +44,6 @@ async function handleSubmit(event) {
   try {
     showLoader(); // Показуємо лоадер
     hideLoadMoreButton(); // Приховуємо кнопку "Load more"
-    showLoaderAdd(); // При натисканні кнопок "Search" з'являється повідомлення "Loading images, please wait..."
     clearGallery(); // Очищаємо попередню галерею
 
     const data = await getImagesByQuery(currentQuery, currentPage);
@@ -80,19 +74,18 @@ async function handleSubmit(event) {
     });
   } finally {
     hideLoader(); // Ховаємо лоадер, навіть при помилці
-    hideLoaderAdd(); // Ховаємо повідомлення "Loading images, please wait..."
+    
   }
   event.target.reset();
 }
 
 async function handleLoadMore() {
   currentPage += 1;
-  // console.log(currentPage);
+  
 
   try {
     showLoader(); // Показуємо лоадер
     hideLoadMoreButton(); // Приховуємо кнопку "Load more"
-    showLoaderAdd(); // При натисканні кнопок "Search" з'являється повідомлення "Loading images, please wait..."
 
     const data = await getImagesByQuery(currentQuery, currentPage);
     createGallery(data.hits);
@@ -126,6 +119,6 @@ async function handleLoadMore() {
     });
   } finally {
     hideLoader(); // Ховаємо лоадер
-    hideLoaderAdd(); // Ховаємо повідомлення "Loading images, please wait..."
+    
   }
 }

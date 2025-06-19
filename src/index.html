@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Image Search</title>
     <link rel="stylesheet" href="./css/styles.css" />
-    <link rel="stylesheet" href="./css/loader.css" />
+    
   </head>
 
   <body>
@@ -15,6 +15,10 @@
         <button type="submit" class="search-btn">Search</button>
       </form>
     </header>
+
+    <main class="main">
+
+    <ul class="gallery"></ul>
 
     <!-- Лоадер - Індикатор завантаження -->
     <span id="loader" class="loader is-hidden">
@@ -28,13 +32,9 @@
         <div></div>
         <div></div>
       </div>
+      <b>Loading images, please wait...</b>
     </span>
-
-    <main class="main">
-      <ul class="gallery"></ul>
-
-      <div class="loader-add hidden"><b>Loading images, please wait...</b></div>
-
+   
       <button type="button" class="load-more hidden">Load more</button>
     </main>
 
