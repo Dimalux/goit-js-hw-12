@@ -101,7 +101,7 @@ async function handleLoadMore() {
       behavior: 'smooth',
     });
 
-    const totalPages = Math.ceil(data.totalHits / 15);
+    totalPages = Math.ceil(data.totalHits / 15);
     if (currentPage >= totalPages) {
       hideLoadMoreButton(); // Приховуємо кнопку "Load more"
 
